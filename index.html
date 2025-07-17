@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Centro Redención - Iglesia cristiana en Elche, España. Conquistando nuestra ciudad, una casa a la vez." />
+<meta name="keywords" content="Iglesia, Centro Redención, Elche, Cristo, Comunidad, Pastores" />
+<title>Centro Redención</title>
+
+<!-- Google Fonts Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- FontAwesome para iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  /* RESET & BASE */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif;
+    background: #111111;
+    color: #eee;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:focus, button:focus {
+    outline: 3px solid #a82828;
+    outline-offset: 3px;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #002244;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 9999;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #a82828;
+    user-select: none;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav ul li a {
+    color: #eee;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: #a82828;
+  }
+
+  /* CONTENEDOR PRINCIPAL */
+  main {
+    padding-top: 80px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* SECCIONES SEPARADAS */
+  section {
+    padding: 3rem 1.5rem;
+    margin-bottom: 3rem;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.8);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* TÍTULOS */
+  h1, h2, h3 {
+    margin-top: 0;
+    font-weight: 700;
+    color: #a82828;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.7rem;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  /* PÁRRAFOS */
+  p {
+    color: #ddd;
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+
+  /* BOTONES */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.6rem;
+    border-radius: 8px;
+    background: #a82828;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(168, 40, 40, 0.5);
+    user-select: none;
+  }
+  .btn:hover,
+  .btn:focus {
+    background: #ee4444;
+    box-shadow: 0 6px 12px rgba(238, 68, 68, 0.8);
+    outline: none;
+  }
+
+  /* BIENVENIDA */
+  #bienvenida {
+    background: linear-gradient(135deg, #002244, #a82828);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(168, 40, 40, 0.7);
+  }
+  #bienvenida p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  /* PROCESO ESPIRITUAL */
+  .proceso-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .proceso-item {
+    background: #111;
+    border-radius: 12px;
+    padding: 1.5rem;
+    flex: 1 1 260px;
+    max-width: 280px;
+    box-shadow: 0 4px 12px rgba(168, 40, 40, 0.6);
+    transition: transform 0.3s ease;
+  }
+  .proceso-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(238, 68, 68, 0.8);
+  }
+  .proceso-item h4 {
+    color: #a82828;
+    margin-bottom: 0.6rem;
+  }
+  .proceso-item p {
+    color: #ccc;
+    font-size: 1rem;
+  }
+
+  /* HORARIOS */
+  #horarios .info-item {
+    background: #002244;
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 34, 68, 0.8);
+    color: #eee;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  /* UBICACIÓN */
+  #ubicacion iframe {
+    border-radius: 12px;
+    width: 100%;
+    height: 280px;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.7);
+    margin-top: 1rem;
+  }
+  #ubicacion .direccion {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #eee;
+    margin-top: 1rem;
+  }
+
+  /* FORMULARIO DE CONTACTO */
+  #contacto form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  #contacto label {
+    font-weight: 700;
+    color: #a82828;
+    font-size: 1rem;
+  }
+  #contacto input, 
+  #contacto textarea {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #a82828;
+    font-size: 1rem;
+    background: #222;
+    color: #eee;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  #contacto input:focus,
+  #contacto textarea:focus {
+    border-color: #ee4444;
+    outline: none;
+  }
+  #contacto button {
+    align-self: center;
+  }
+
+  /* REDES SOCIALES */
+  .redes-container {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .redes-container a {
+    margin: 0 10px;
+    font-size: 1.8rem;
+    color: #eee;
+    transition: color 0.3s ease;
+  }
+  .redes-container a:hover,
+  .redes-container a:focus {
+    color: #a82828;
+  }
+
+  /* PASTORES */
+  #pastores .pastor-item {
+    background: #111;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(238, 68, 68, 0.8);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #eee;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #002244;
+    color: #eee;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav ul {
+      gap: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    main {
+      padding: 80px 1rem 1rem 1rem;
+      max-width: 100%;
+    }
+    .proceso-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Menú principal">
+  <div class="logo" tabindex="0">Centro Redención</div>
+  <ul>
+    <li><a href="#bienvenida">Inicio</a></li>
+    <li><a href="#proceso">Proceso espiritual</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#pastores">Pastores</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- BIENVENIDA -->
+<section id="bienvenida" role="region" aria-labelledby="bienvenida-title">
+  <h1 id="bienvenida-title" tabindex="0">Bienvenidos a Centro Redención</h1>
+  <p>Conquistando nuestra ciudad, una casa a la vez.</p>
+  <p>Te invitamos a ser parte de nuestra comunidad en Elche, España.</p>
+</section>
+
+<!-- PROCESO ESPIRITUAL -->
+<section id="proceso" role="region" aria-labelledby="proceso-title">
+  <h2 id="proceso-title" tabindex="0">Proceso espiritual - Nuestro camino de fe</h2>
+  <div class="proceso-container">
+    <article class="proceso-item" tabindex="0" aria-label="Primera etapa: Peces">
+      <h4>Peces</h4>
+      <p>Representan a quienes están comenzando su camino en la fe, aceptando a Jesús como Salvador.</p>
+    </article>
+    <article class="proceso-item" tabindex="0" aria-label="Segunda etapa: Corderos">
+      <h4>Corderos</h4>
+      <p>Simbolizan la etapa de crecimiento espiritual y aprendizaje de la palabra de Dios.</p>
+    </article>
+    <article class="proceso-item" tabindex="0" aria-label="Tercera etapa: Leones">
+      <h4>Leones</h4>
+      <p>Son los creyentes fuertes y comprometidos que defienden la fe con valentía y liderazgo.</p>
+    </article>
+    <article class="proceso-item" tabindex="0" aria-label="Cuarta etapa: Águilas">
+      <h4>Águilas</h4>
+      <p>Representan la madurez espiritual, con visión clara y capacidad de guiar a otros en el camino.</p>
+    </article>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section id="horarios" role="region" aria-labelledby="horarios-title">
+  <h2 id="horarios-title" tabindex="0">Horarios de celebración</h2>
+  <div class="info-item" tabindex="0">
+    <strong>Domingo:</strong> 11:00 AM - Celebración Principal
+  </div>
+  <div class="info-item" tabindex="0">
+    <strong>Miércoles:</strong> 7:00 PM - Estudio Bíblico
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion" role="region" aria-labelledby="ubicacion-title">
+  <h2 id="ubicacion-title" tabindex="0">Dónde encontrarnos</h2>
+  <div class="direccion" tabindex="0">
+    Jose Gomez Mompeam #82, Elche, España
+  </div>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.4420363952496!2d-0.7121116846954324!3d38.26985697968225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6236314a068a4b%3A0xc67c73afc8225a72!2sJose%20G%C3%B3mez%20Mompeam%2082%2C%20Elche!5e0!3m2!1ses!2ses!4v1690123456789!5m2!1ses!2ses" 
+    aria-label="Mapa con ubicación de la iglesia Centro Redención en Elche España" 
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<!-- PASTORES -->
+<section id="pastores" role="region" aria-labelledby="pastores-title">
+  <h2 id="pastores-title" tabindex="0">Nuestros pastores</h2>
+  <div class="pastor-item" tabindex="0">
+    <strong>Carlos Rendón</strong> - Pastor Principal
+  </div>
+  <div class="pastor-item" tabindex="0">
+    <strong>Johana Calvo</strong> - Pastora
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" role="region" aria-labelledby="contacto-title">
+  <h2 id="contacto-title" tabindex="0">Contáctanos</h2>
+  <form 
+    action="https://formspree.io/f/mnqwyrda" 
+    method="POST" 
+    aria-label="Formulario de contacto para enviar mensaje a Centro Redención" 
+    novalidate>
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required aria-required="true" />
+    
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="_replyto" placeholder="tu@correo.com" required aria-required="true" />
+    
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required aria-required="true"></textarea>
+    
+    <button type="submit" class="btn" aria-label="Enviar mensaje de contacto">Enviar</button>
+  </form>
+  <div class="redes-container" aria-label="Redes sociales de Centro Redención">
+    <a href="https://wa.me/34642677385" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Centro Redención"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/34614609987" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp secundario de Centro Redención"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:carlosrendon169@gmail.com" aria-label="Enviar correo a Carlos Rendón"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=100064566287351" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Centro Redención"><i class="fab fa-facebook"></i></a>
+  </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+  &copy; 2025 Centro Redención. Todos los derechos reservados.
+</footer>
+
+<script>
+  // Animaciones: mostrar secciones al hacer scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.15});
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>
+
+</body>
+</html>
